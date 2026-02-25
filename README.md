@@ -17,7 +17,7 @@ I am a software engineer focused on Machine Learning Algorithms and System Desig
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=mhosigiri&theme=dracula&hide_border=true&area=true" width="100%" />
 </p>
 
-
+<!--
 ## 🏆 Achievements
 
 ![Trophies](https://github-profile-trophy.vercel.app/?username=mhosigiri&theme=dracula&no-bg=true&no-frame=true&cache_seconds=86400)
@@ -27,3 +27,4 @@ I am a software engineer focused on Machine Learning Algorithms and System Desig
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mhosigiri&theme=dracula&hide_border=true&layout=compact&cache_seconds=86400)
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mhosigiri&theme=dracula&hide_border=true&show_icons=true&cache_seconds=86400)
+-->
