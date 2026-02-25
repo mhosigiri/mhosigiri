@@ -18,17 +18,12 @@ I am a software engineer focused on Machine Learning Algorithms and System Desig
 </p>
 
 
-### 🏆 Achievements
-<img src="https://github-profile-trophy.vercel.app/?username=mhosigiri&theme=dracula&no-bg=true&no-frame=true" alt="Trophies" />
+## 🏆 Achievements
 
-### 📊 Language & Profile Stats
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mhosigiri&theme=dracula&hide_border=true&layout=compact" />
+![Trophies](https://github-profile-trophy.vercel.app/?username=mhosigiri&theme=dracula&no-bg=true&no-frame=true&cache_seconds=86400)
 
-<img src="https://github-readme-stats.vercel.app/api?username=mhosigiri&theme=dracula&hide_border=true&show_icons=true" />
+## 📊 Language & Profile Stats
 
----
-<p align="center">
-  <a href="https://visitcount.itsvg.in">
-    <img src="https://visitcount.itsvg.in/api?id=mhosigiri&icon=3&color=2" />
-  </a>
-</p>
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mhosigiri&theme=dracula&hide_border=true&layout=compact&cache_seconds=86400)
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mhosigiri&theme=dracula&hide_border=true&show_icons=true&cache_seconds=86400)
