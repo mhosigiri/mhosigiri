@@ -88,7 +88,9 @@ export function NavBar() {
           justifyContent: 'space-between',
           padding: '0 clamp(1.5rem, 5vw, 4rem)',
           height: scrolled ? 52 : 64,
-          background: scrolled ? 'rgba(245,244,240,0.92)' : 'transparent',
+          background: scrolled 
+            ? (theme === 'dark' ? 'rgba(12,12,12,0.92)' : 'rgba(245,244,240,0.92)') 
+            : 'transparent',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
           borderBottom: scrolled ? '1px solid var(--color-border)' : 'none',
           transition: 'height 0.3s, background 0.3s, border-color 0.3s',
