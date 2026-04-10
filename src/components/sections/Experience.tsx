@@ -25,7 +25,7 @@ const ROLES: Role[] = [
       'Implementing redundancy protocols to ensure zero-downtime during match events',
     ],
     tags: ['Cisco SD-WAN', 'Layer 2/3', 'Enterprise Networking'],
-    badge: 'Upcoming',
+    badge: 'Internship',
   },
   {
     id: 'hfl',
@@ -39,6 +39,7 @@ const ROLES: Role[] = [
       'Authored research on user performance metrics in immersive law enforcement simulations',
     ],
     tags: ['Unity', 'C#', 'Python', 'XR Toolkit', 'Motion Capture'],
+    badge: 'Research',
   },
   {
     id: 'ai',
@@ -51,6 +52,7 @@ const ROLES: Role[] = [
       'Reduced cloud infrastructure costs 20% via architecture review and right-sizing',
     ],
     tags: ['OCR', 'RAG', 'Python', 'NLP', 'Cloud'],
+    badge: 'Externship',
   },
 ]
 

@@ -52,17 +52,11 @@ export function About() {
             Building at the intersection<br />of VR, AI, and systems
           </h2>
 
-          <p style={{ color: 'var(--color-text-muted)', marginBottom: '1rem', lineHeight: 1.75 }}>
+          <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75 }}>
             I'm a Computer Science student at UT Arlington graduating December 2026,
             focused on VR/XR development, AI/ML pipelines, and full-stack engineering.
             I work at the Human Factors Lab building immersive training simulations and
             real-time telemetry systems.
-          </p>
-
-          <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75 }}>
-            This summer I'll be supporting the{' '}
-            <span style={{ color: 'var(--color-text)', fontWeight: 500 }}>FIFA World Cup 2026</span>
-            {' '}as a Network Operations intern — managing 2,500+ endpoints across live match venues.
           </p>
         </motion.div>
 

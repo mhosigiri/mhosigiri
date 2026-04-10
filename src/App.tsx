@@ -1,10 +1,11 @@
-import { NavBar }    from './components/ui/NavBar'
-import { Hero }      from './components/sections/Hero'
-import { About }     from './components/sections/About'
-import { Experience } from './components/sections/Experience'
-import { Projects }  from './components/sections/Projects'
-import { Skills }    from './components/sections/Skills'
-import { Contact }   from './components/sections/Contact'
+import { NavBar }      from './components/ui/NavBar'
+import { Hero }        from './components/sections/Hero'
+import { FIFAMarquee } from './components/ui/FIFAMarquee'
+import { About }       from './components/sections/About'
+import { Experience }  from './components/sections/Experience'
+import { Projects }    from './components/sections/Projects'
+import { Skills }      from './components/sections/Skills'
+import { Contact }     from './components/sections/Contact'
 
 function Footer() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
 
       <main id="main-content">
         <Hero />
+        <FIFAMarquee />
         <About />
         <Experience />
         <Projects />
