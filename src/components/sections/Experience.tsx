@@ -26,7 +26,6 @@ const ROLES: Role[] = [
     tags: ['Machine Learning', 'Python', 'Data Analysis', 'Feature Engineering', 'Model Evaluation'],
     badge: 'Apprenternship',
   },
-  ,
   {
     id: 'hfl',
     company: 'Human Factors Lab · UTA',
@@ -54,7 +53,7 @@ const ROLES: Role[] = [
     ],
     tags: ['Cisco SD-WAN', 'Layer 2/3', 'Enterprise Networking', Microsoft Suite],
     badge: 'Internship',
-  }
+  },
 ]
 
 function ExperienceRow({ role, index }: { role: Role; index: number }) {
