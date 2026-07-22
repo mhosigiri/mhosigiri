@@ -6,9 +6,9 @@ import { CoinScene } from '../three/CoinScene'
 
 const ROLES = [
   'VR/XR Developer',
-  'AI Engineer',
+  'AI/ML Engineer',
   'Full-Stack Builder',
-  'Network Ops · FIFA WC 2026',
+  'Cloud Engineer',
 ]
 
 export function Hero() {
