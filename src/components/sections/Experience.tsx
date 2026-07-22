@@ -24,7 +24,7 @@ const ROLES: Role[] = [
       'Compared model performance using accuracy and other evaluation metrics to support responsible, data-driven recommendations'
     ],
     tags: ['Machine Learning', 'Python', 'Data Analysis', 'Feature Engineering', 'Model Evaluation'],
-    badge: 'Apprenternship',
+    badge: 'Fellowship',
   },
   {
     id: 'hfl',
@@ -51,7 +51,7 @@ const ROLES: Role[] = [
       'Collaborating with international teams on Layer 2/3 network architecture',
       'Implementing redundancy protocols to ensure zero-downtime during match events',
     ],
-    tags: ['Cisco SD-WAN', 'Layer 2/3', 'Enterprise Networking', Microsoft Suite],
+    tags: ['Cisco SD-WAN', 'Layer 2/3', 'Enterprise Networking', 'Microsoft Suite'],
     badge: 'Internship',
   },
 ]
