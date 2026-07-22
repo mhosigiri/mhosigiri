@@ -53,7 +53,7 @@ const PROJECTS: Project[] = [
   description:
     'Searchable indoor navigation platform for the Dallas International Broadcast Centre, built from a large technical floor plan with more than 200 categorized rooms and precise map coordinates.',
   tags: ['Computer Vision', 'RAG', 'JavaScript', 'Geospatial', 'Offline-First'],
-  category: 'Software',
+  category: 'Full Stack',
   year: '2026',
   },
   {
