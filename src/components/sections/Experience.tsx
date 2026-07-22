@@ -14,19 +14,19 @@ interface Role {
 
 const ROLES: Role[] = [
   {
-    id: 'fifa',
-    company: 'HBS / FIFA World Cup 2026',
-    role: 'Network Operations Intern',
-    period: 'Summer 2026',
+    id: 'ai',
+    company: 'Break Through Tech - Cornell University',
+    role: 'AI ML Fellow',
+    period: 'June 2026 - Present',
     bullets: [
-      'Supporting network operations for 2,500+ endpoints across live match venues',
-      'Configuring and monitoring Cisco SD-WAN infrastructure for real-time broadcast',
-      'Collaborating with international teams on Layer 2/3 network architecture',
-      'Implementing redundancy protocols to ensure zero-downtime during match events',
+      'Built and evaluated machine learning classification models using Decision Trees and K-Nearest Neighbors',
+      'Performed data preprocessing, feature engineering, imputation, and exploratory data analysis on real-world datasets',
+      'Compared model performance using accuracy and other evaluation metrics to support responsible, data-driven recommendations'
     ],
-    tags: ['Cisco SD-WAN', 'Layer 2/3', 'Enterprise Networking'],
-    badge: 'Internship',
+    tags: ['Machine Learning', 'Python', 'Data Analysis', 'Feature Engineering', 'Model Evaluation'],
+    badge: 'Apprenternship',
   },
+  ,
   {
     id: 'hfl',
     company: 'Human Factors Lab · UTA',
@@ -42,18 +42,19 @@ const ROLES: Role[] = [
     badge: 'Research',
   },
   {
-    id: 'ai',
-    company: 'AI & Automation Externship',
-    role: 'AI/ML Extern',
-    period: 'May – Jul 2025',
+    id: 'fifa',
+    company: 'Host Broadcast Services',
+    role: 'Information Technology Intern',
+    period: 'Summer 2026',
     bullets: [
-      'Designed and implemented OCR pipeline for automated document digitization',
-      'Built RAG pipeline for intelligent support routing, reducing response time by 50%',
-      'Reduced cloud infrastructure costs 20% via architecture review and right-sizing',
+      'Supporting network operations for 2,500+ endpoints across live match venues',
+      'Configuring and monitoring Cisco SD-WAN infrastructure for real-time broadcast',
+      'Collaborating with international teams on Layer 2/3 network architecture',
+      'Implementing redundancy protocols to ensure zero-downtime during match events',
     ],
-    tags: ['OCR', 'RAG', 'Python', 'NLP', 'Cloud'],
-    badge: 'Externship',
-  },
+    tags: ['Cisco SD-WAN', 'Layer 2/3', 'Enterprise Networking', Microsoft Suite],
+    badge: 'Internship',
+  }
 ]
 
 function ExperienceRow({ role, index }: { role: Role; index: number }) {
