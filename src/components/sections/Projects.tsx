@@ -27,6 +27,16 @@ const PROJECTS: Project[] = [
     year: '2025',
   },
   {
+  id: 'herdsignal',
+  title: 'HerdSignal',
+  subtitle: 'HackSMU VII Winner · Full-Stack ML Developer',
+  description:
+    'Elephant conservation platform that separates vocalizations from noisy field recordings using unsupervised signal processing, while visualizing population, habitat, and poaching data through geospatial heatmaps.',
+  tags: ['Python', 'FastAPI', 'NMF', 'Next.js', 'PostGIS'],
+  category: 'AI/ML',
+  year: '2026',
+  },
+  {
     id: 'imse',
     title: 'Multiplayer 3D Hybrid Machine',
     subtitle: 'UTA IMSE Department',
@@ -35,6 +45,16 @@ const PROJECTS: Project[] = [
     tags: ['Unity', 'Multiplayer', 'C#', 'Manufacturing'],
     category: 'VR/XR',
     year: '2025',
+  },
+  {
+  id: 'ibc-navigation',
+  title: 'IBC Dallas Navigation Map',
+  subtitle: 'FIFA World Cup 2026 · Indoor Navigation',
+  description:
+    'Searchable indoor navigation platform for the Dallas International Broadcast Centre, built from a large technical floor plan with more than 200 categorized rooms and precise map coordinates.',
+  tags: ['Computer Vision', 'RAG', 'JavaScript', 'Geospatial', 'Offline-First'],
+  category: 'Software',
+  year: '2026',
   },
   {
     id: 'feedbackai',
