@@ -22,7 +22,7 @@ const MARQUEE_CONTENT = (
     <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
     <span style={{ fontWeight: 600 }}>FIFA World Cup 2026</span>
     <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
-    <span>Network Operations Intern</span>
+    <span>HBS FIFA Programme Intern</span>
     <span style={{ opacity: 0.4, margin: '0 2.5rem' }}>•</span>
   </>
 )
