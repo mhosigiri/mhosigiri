@@ -5,7 +5,7 @@ const DOMAINS = [
   { label: 'VR/XR',       desc: 'Unity · XR Toolkit · Motion Capture' },
   { label: 'AI/ML',       desc: 'PyTorch · RAG · Gemini · OCR' },
   { label: 'Full-Stack',  desc: 'React · FastAPI · Spring Boot' },
-  { label: 'Networking',  desc: 'Cisco SD-WAN · Layer 2/3' },
+  { label: 'Cloud',  desc: 'Amazon Web Services, Google Cloud Platform, Microsoft Azure, Oracle Cloud' },
 ]
 
 export function About() {
