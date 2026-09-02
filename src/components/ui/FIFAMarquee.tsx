@@ -1,16 +1,35 @@
 import { motion } from 'framer-motion'
 
+const LOGO_STYLE = {
+  height: '2.5em',
+  width: 'auto',
+  display: 'inline-block',
+  verticalAlign: 'middle',
+  objectFit: 'contain',
+} as const
+
 const FIFA_LOGO = (
   <img
     src="/fifa.png"
     alt="FIFA World Cup 2026"
-    style={{
-      height: '2.5em',
-      width: 'auto',
-      display: 'inline-block',
-      verticalAlign: 'middle',
-      objectFit: 'contain',
-    }}
+    style={LOGO_STYLE}
+  />
+)
+
+const CORNELL_TECH_LOGO = (
+  <img
+    src="/cornell-tech.png"
+    alt="Cornell Tech"
+    style={LOGO_STYLE}
+  />
+)
+
+const HARVEY_LOGO = (
+  <img
+    src="/harvey.png"
+    alt="Harvey"
+    className="harvey-logo"
+    style={{ ...LOGO_STYLE, height: '1.8em' }}
   />
 )
 
@@ -23,6 +42,18 @@ const MARQUEE_CONTENT = (
     <span style={{ fontWeight: 600 }}>FIFA World Cup 2026</span>
     <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
     <span>HBS FIFA Programme Intern</span>
+    <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
+    {CORNELL_TECH_LOGO}
+    <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
+    <span style={{ fontWeight: 600 }}>Cornell Tech</span>
+    <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
+    <span>Break Through Tech AI ML Fellow</span>
+    <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
+    {HARVEY_LOGO}
+    <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
+    <span style={{ fontWeight: 600 }}>Harvey</span>
+    <span style={{ opacity: 0.4, margin: '0 1.25rem' }}>•</span>
+    <span>Machine Learning Fellow</span>
     <span style={{ opacity: 0.4, margin: '0 2.5rem' }}>•</span>
   </>
 )
@@ -30,7 +61,7 @@ const MARQUEE_CONTENT = (
 export function FIFAMarquee() {
   return (
     <section
-      aria-label="FIFA World Cup 2026 announcement"
+      aria-label="Experience highlights"
       style={{
         position: 'relative',
         zIndex: 1,
@@ -54,7 +85,7 @@ export function FIFAMarquee() {
             x: {
               repeat: Infinity,
               repeatType: 'loop',
-              duration: 20,
+              duration: 32,
               ease: 'linear',
             },
           }}
@@ -75,8 +106,10 @@ export function FIFAMarquee() {
       </div>
 
       <style>{`
+        [data-theme="dark"] .harvey-logo { filter: invert(1); }
+
         @media (prefers-reduced-motion: reduce) {
-          section[aria-label="FIFA World Cup 2026 announcement"] > div > div {
+          section[aria-label="Experience highlights"] > div > div {
             animation: none !important;
             transform: none !important;
           }

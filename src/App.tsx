@@ -3,6 +3,7 @@ import { Hero }        from './components/sections/Hero'
 import { FIFAMarquee } from './components/ui/FIFAMarquee'
 import { About }       from './components/sections/About'
 import { Experience }  from './components/sections/Experience'
+import { Leadership }  from './components/sections/Leadership'
 import { Projects }    from './components/sections/Projects'
 import { Skills }      from './components/sections/Skills'
 import { Contact }     from './components/sections/Contact'
@@ -43,6 +44,7 @@ export default function App() {
         <FIFAMarquee />
         <About />
         <Experience />
+        <Leadership />
         <Projects />
         <Skills />
         <Contact />

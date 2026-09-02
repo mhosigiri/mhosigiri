@@ -145,7 +145,7 @@ export function Hero() {
         }}
       >
         CS @ UT Arlington<br />
-        Graduating Dec 2026
+        Graduating May 2027
       </motion.p>
     </section>
   )

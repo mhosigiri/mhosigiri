@@ -3,20 +3,20 @@ import { motion, useInView } from 'framer-motion'
 
 const SKILL_CATEGORIES = [
   {
-    label: 'Languages',
-    skills: ['Python', 'C#', 'TypeScript', 'Java', 'C++', 'SQL', 'JavaScript'],
+    label: 'Languages & Frameworks',
+    skills: ['Python', 'Java', 'C#', 'JavaScript', 'TypeScript', 'SQL', 'Node.js', 'FastAPI', 'React', 'Next.js', 'Spring Boot', '.NET', 'C++', 'Unity XR Toolkit', 'Vue 3'],
   },
   {
-    label: 'Frameworks',
-    skills: ['React', 'FastAPI', 'Spring Boot', '.NET', 'Unity XR Toolkit', 'Vue 3', 'Node.js'],
+    label: 'Cloud, APIs & Data',
+    skills: ['AWS Cloud', 'AWS Lambda', 'Amazon S3', 'Amazon DynamoDB', 'Amazon EventBridge', 'Amazon ECS', 'Amazon Kinesis', 'Apache Kafka (Confluent)', 'REST APIs', 'SOAP APIs', 'XML', 'XSLT', 'XPath', 'JSON', 'ETL', 'Data Transformation', 'Google Cloud', 'Firebase'],
   },
   {
     label: 'AI / ML',
     skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'LangChain', 'Gemini', 'YOLOv8', 'ChromaDB', 'Groq'],
   },
   {
-    label: 'Tools & Platforms',
-    skills: ['Linux', 'Git', 'Docker', 'AWS', 'Google Cloud', 'Firebase', 'Tesseract OCR'],
+    label: 'DevOps & Delivery',
+    skills: ['Git', 'GitHub Actions', 'Docker', 'Linux', 'CI/CD', 'DevOps', 'DevSecOps', 'Software Testing', 'Automated Testing', 'Jira', 'Xray', 'Agile', 'Scaled Agile (SAFe)', 'Workday Integration Fundamentals', 'Tesseract OCR'],
   },
   {
     label: 'Networking',

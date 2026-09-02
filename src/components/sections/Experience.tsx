@@ -14,6 +14,19 @@ interface Role {
 
 const ROLES: Role[] = [
   {
+    id: 'harvey',
+    company: 'Harvey',
+    role: 'Machine Learning Fellow',
+    period: '',
+    bullets: [
+      'Developing a 7-stage Python multimodal document-intake pipeline across 1,000 scanned documents and 36 source classes, comparing ColPali and ColQwen vision embeddings against OCR-text baselines for classification, out-of-scope detection, and schema-validated JSON extraction.',
+      'Collaborating in a 10-week Agile sprint with biweekly stakeholder reviews, tracking work across 4 milestones in GitHub Projects and evaluating 264 legal documents across 5 in-scope classes using 3+ clustering algorithms and metrics including ARI, NMI, Macro F1, and ROC-AUC.',
+      'Implementing reproducible experiments with stratified splits, fixed seeds, pinned model versions, and incremental FP16 embedding caches of approximately 260 MB per model to prevent redundant GPU computation.',
+    ],
+    tags: ['Python', 'Multimodal AI', 'ColPali', 'ColQwen', 'OCR', 'ML Evaluation'],
+    badge: 'Fellowship',
+  },
+  {
     id: 'ai',
     company: 'Break Through Tech - Cornell University',
     role: 'AI ML Fellow',
@@ -52,6 +65,19 @@ const ROLES: Role[] = [
       'Implementing redundancy protocols to ensure zero-downtime during match events',
     ],
     tags: ['Cisco SD-WAN', 'Layer 2/3', 'Enterprise Networking', 'Microsoft Suite'],
+    badge: 'Internship',
+  },
+  {
+    id: 'outamation-ai',
+    company: 'Outamation AI',
+    role: 'AI and Automation Intern',
+    period: 'May 2025 - July 2025',
+    bullets: [
+      'Developed a Python-based document processing and classification pipeline using NLP and TensorFlow, containerized and deployed on Linux to reduce end-to-end processing time and improve accuracy.',
+      'Designed and benchmarked a retrieval system with LlamaIndex and RAG on cloud infrastructure, evaluating transformer models under different latency, throughput, and cost constraints for production-style workloads.',
+      'Produced monitoring-focused evaluation reports comparing models and pipeline designs, recommending configurations that reduced compute cost and improved reliability of automated workflows.',
+    ],
+    tags: ['Python', 'NLP', 'TensorFlow', 'LlamaIndex', 'RAG', 'Linux'],
     badge: 'Internship',
   },
 ]
@@ -116,16 +142,18 @@ function ExperienceRow({ role, index }: { role: Role; index: number }) {
             <span style={{ font: 'var(--font-small)', fontFamily: 'var(--font-sans)', color: 'var(--color-text-muted)' }}>
               {role.role}
             </span>
-            <span
-              style={{
-                font: 'var(--font-label)',
-                fontFamily: 'var(--font-mono)',
-                color: 'var(--color-text-muted)',
-                letterSpacing: '0.04em',
-              }}
-            >
-              {role.period}
-            </span>
+            {role.period && (
+              <span
+                style={{
+                  font: 'var(--font-label)',
+                  fontFamily: 'var(--font-mono)',
+                  color: 'var(--color-text-muted)',
+                  letterSpacing: '0.04em',
+                }}
+              >
+                {role.period}
+              </span>
+            )}
           </div>
         </div>
 
