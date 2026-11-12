@@ -1,0 +1,42 @@
+.coin-scene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  container-type: size;
+}
+
+.coin-scene__fallback {
+  --poster-size: calc(min(62cqh, 66cqw) * 1.3);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.coin-scene__fallback img {
+  position: relative;
+  display: block;
+  width: var(--poster-size);
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: -0.45rem 0.08rem 0 -0.06rem var(--coin-shadow-color), -0.52rem 0.08rem 0 -0.06rem var(--coin-base-color);
+  filter: grayscale(1) sepia(0.9) saturate(1.65) brightness(1.32);
+  transform: rotate(5deg) scaleX(.94);
+}
+
+.coin-scene__fallback::before {
+  content: "";
+  position: absolute;
+  inset-block-start: calc(50% + var(--poster-size) * 0.47);
+  width: calc(var(--poster-size) * 0.9);
+  height: calc(var(--poster-size) * 0.18);
+  background:
+    radial-gradient(ellipse 25% 35% at 44% 60%, rgb(38 33 28 / 43%), transparent),
+    radial-gradient(ellipse 38% 48% at 57% 47%, rgb(38 33 28 / 28%), transparent);
+  transform: translate(8%, -50%);
+}
+
+.coin-scene:has(canvas[data-coin-ready]) .coin-scene__fallback {
+  visibility: hidden;
+}

@@ -1,67 +1,56 @@
-import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { Environment, ContactShadows } from '@react-three/drei'
-import { Coin } from './Coin'
+import { Component, lazy, Suspense, useState, type ReactNode, type RefObject } from 'react'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import './CoinScene.css'
+
+const CoinCanvas = lazy(() => import('./CoinCanvas'))
+const coinImage = '/anish-coin.webp'
 
 interface CoinSceneProps {
-  nudge: { x: number; y: number }
-  /** 0 = fully in hero, 1 = hero completely scrolled past */
-  exitRatio: number
+  pointerTarget: RefObject<HTMLElement | null>
+  getProgress: () => number
 }
 
-export function CoinScene({ nudge, exitRatio }: CoinSceneProps) {
-  const reduceMotion = useReducedMotion()
-  if (reduceMotion) return null
+class CoinCanvasBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false }
 
-  const blur    = exitRatio * 18          // 0px → 18px
-  const opacity = 1 - exitRatio * 0.85   // 1 → 0.15 (never fully invisible)
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+
+  render() {
+    return this.state.failed ? null : this.props.children
+  }
+}
+
+function canRenderCoin() {
+  const context = document.createElement('canvas').getContext('webgl2')
+  if (!context) return false
+  context.getExtension('WEBGL_lose_context')?.loseContext()
+  return true
+}
+
+function AnimatedCoin({ pointerTarget, getProgress }: CoinSceneProps) {
+  const [supported] = useState(canRenderCoin)
+  if (!supported) return null
 
   return (
-    <div
-      aria-hidden="true"
-      style={{
-        position: 'absolute',
-        inset: 0,
-        pointerEvents: 'none',
-        zIndex: 0,
-        filter: `blur(${blur.toFixed(2)}px)`,
-        opacity,
-        transition: 'filter 0.15s linear, opacity 0.15s linear',
-        willChange: 'filter, opacity',
-      }}
-    >
-    <Canvas
-      aria-hidden="true"
-      role="presentation"
-      style={{
-        width: '100%',
-        height: '100%',
-        display: 'block',
-      }}
-      camera={{ position: [0, 0.4, 4.2], fov: 38 }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-      shadows
-    >
-      <ambientLight intensity={0.35} />
-      <directionalLight position={[3, 5, 3]}   intensity={3.5} color="#FFE0A0" castShadow shadow-mapSize={[2048, 2048]} />
-      <directionalLight position={[-4, 3, -2]} intensity={1.2} color="#B0C8FF" />
-      <directionalLight position={[0, -3, 2]}  intensity={0.4} color="#FFD080" />
-
+    <CoinCanvasBoundary>
       <Suspense fallback={null}>
-        <Environment preset="studio" />
-        <Coin nudge={nudge} />
-        <ContactShadows
-          position={[0, -1.1, 0]}
-          opacity={0.3}
-          scale={3.5}
-          blur={2.5}
-          far={3}
-          color="#8B6914"
-        />
+        <CoinCanvas pointerTarget={pointerTarget} getProgress={getProgress} image={coinImage} />
       </Suspense>
-    </Canvas>
+    </CoinCanvasBoundary>
+  )
+}
+
+export function CoinScene({ pointerTarget, getProgress }: CoinSceneProps) {
+  const reduceMotion = useReducedMotion()
+
+  return (
+    <div className="coin-scene" aria-hidden="true">
+      <div className="coin-scene__fallback">
+        <img src={coinImage} alt="" width={960} height={960} fetchPriority="high" />
+      </div>
+      {!reduceMotion && <AnimatedCoin pointerTarget={pointerTarget} getProgress={getProgress} />}
     </div>
   )
 }
