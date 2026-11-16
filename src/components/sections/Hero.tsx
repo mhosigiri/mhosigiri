@@ -122,7 +122,7 @@ export function Hero() {
           ))}
         </div>
 
-        <div className="hero__stage" aria-hidden="true">
+        <div className="hero__stage">
           <CoinScene pointerTarget={viewportRef} getProgress={getProgress} />
         </div>
 

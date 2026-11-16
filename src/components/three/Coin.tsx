@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, type RefObject } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, type RefObject } from 'react'
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import {
   CircleGeometry,
@@ -9,14 +9,18 @@ import {
   SRGBColorSpace,
   TextureLoader,
   Vector2,
+  Vector3,
 } from 'three'
 
 export interface CoinProps {
   pointerTarget: RefObject<HTMLElement | null>
   getProgress: () => number
   image: string
+  spinTarget: RefObject<HTMLButtonElement | null>
 }
 
+const fullTurn = 2 * Math.PI
+const spinDurationMs = 3400
 const radius = 1
 const coinScale = 1.3
 const rollingRadius = radius * coinScale
@@ -38,12 +42,14 @@ const coinVertex = /* glsl */ `
   varying vec2 vUv;
   varying vec3 vNormal;
   varying vec3 vTangent;
+  varying vec3 vAxis;
   varying vec3 vPosition;
 
   void main() {
     vUv = uv;
     vNormal = normalize(mat3(modelMatrix) * normal);
     vTangent = normalize(mat3(modelMatrix) * vec3(1.0, 0.0, 0.0));
+    vAxis = normalize(mat3(modelMatrix) * vec3(0.0, 0.0, 1.0));
     vec4 positionWorld = modelMatrix * vec4(position, 1.0);
     vPosition = positionWorld.xyz;
     gl_Position = projectionMatrix * viewMatrix * positionWorld;
@@ -61,6 +67,7 @@ const coinFragment = /* glsl */ `
   varying vec2 vUv;
   varying vec3 vNormal;
   varying vec3 vTangent;
+  varying vec3 vAxis;
   varying vec3 vPosition;
 
   float luma(vec3 color) {
@@ -131,7 +138,7 @@ const coinFragment = /* glsl */ `
       float phase = vUv.x * 691.1504;
       float detail = 1.0 - smoothstep(0.70, 3.05, fwidth(phase));
       float groove = 0.5 + 0.5 * cos(phase) * detail;
-      vec3 tangent = vec3(-normal.y, normal.x, 0.0);
+      vec3 tangent = cross(vAxis, normal);
       normal = normalize(normal + tangent * sin(phase) * grooveBand * detail * 0.22);
       roughness = mix(0.23, 0.43, grooveBand * (1.0 - groove));
       metal = mix(uBase, uHighlight, 0.36 + (1.0 - grooveBand) * 0.33);
@@ -182,12 +189,14 @@ const shadowFragment = /* glsl */ `
   }
 `
 
-export function Coin({ pointerTarget, getProgress, image }: CoinProps) {
+export function Coin({ pointerTarget, getProgress, image, spinTarget }: CoinProps) {
   const rollingGroup = useRef<Group>(null)
   const shadowGroup = useRef<Group>(null)
   const input = useRef({ progress: 0, pointerX: 0, pointerY: 0 })
   const pose = useRef({ progress: 0, pointerX: 0, pointerY: 0 })
+  const spin = useRef<{ from: number; to: number; startedAt: number } | null>(null)
   const hasFrame = useRef(false)
+  const projected = useMemo(() => new Vector3(), [])
   const source = useLoader(TextureLoader, image)
   const { gl, invalidate } = useThree()
 
@@ -218,9 +227,10 @@ export function Coin({ pointerTarget, getProgress, image }: CoinProps) {
 
   useEffect(() => () => texture.dispose(), [texture])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const target = pointerTarget.current
-    if (!target) return
+    const button = spinTarget.current
+    if (!target || !button) return
 
     const updatePalette = () => {
       const styles = getComputedStyle(target)
@@ -253,6 +263,21 @@ export function Coin({ pointerTarget, getProgress, image }: CoinProps) {
       invalidate()
     }
 
+    const startSpin = (event: MouseEvent) => {
+      const coin = rollingGroup.current
+      if (!coin) return
+
+      const { left, width } = button.getBoundingClientRect()
+      const direction = event.detail > 0 && event.clientX < left + width / 2 ? 1 : -1
+      const from = coin.rotation.y
+      spin.current = {
+        from,
+        to: (Math.round(from / fullTurn) + direction * 2) * fullTurn,
+        startedAt: performance.now(),
+      }
+      invalidate()
+    }
+
     const onContextLost = () => {
       gl.domElement.removeAttribute('data-coin-ready')
       hasFrame.current = false
@@ -263,7 +288,8 @@ export function Coin({ pointerTarget, getProgress, image }: CoinProps) {
     const observer = new MutationObserver(updatePalette)
     observer.observe(document.documentElement, { attributeFilter: ['data-theme'] })
     updatePalette()
-    updateScroll()
+    input.current.progress = pose.current.progress = getProgress()
+    button.addEventListener('click', startSpin)
     target.addEventListener('pointermove', updatePointer, { passive: true })
     target.addEventListener('pointerleave', resetPointer)
     window.addEventListener('scroll', updateScroll, { passive: true })
@@ -273,6 +299,7 @@ export function Coin({ pointerTarget, getProgress, image }: CoinProps) {
 
     return () => {
       observer.disconnect()
+      button.removeEventListener('click', startSpin)
       target.removeEventListener('pointermove', updatePointer)
       target.removeEventListener('pointerleave', resetPointer)
       window.removeEventListener('scroll', updateScroll)
@@ -282,9 +309,9 @@ export function Coin({ pointerTarget, getProgress, image }: CoinProps) {
       gl.domElement.removeAttribute('data-coin-ready')
       hasFrame.current = false
     }
-  }, [getProgress, gl, invalidate, palette, pointerTarget])
+  }, [getProgress, gl, invalidate, palette, pointerTarget, spinTarget])
 
-  useFrame(({ camera }, delta) => {
+  useFrame(({ camera, size }, delta) => {
     const coin = rollingGroup.current
     const shadow = shadowGroup.current
     if (!coin || !shadow || gl.getContext().isContextLost()) return
@@ -310,8 +337,31 @@ export function Coin({ pointerTarget, getProgress, image }: CoinProps) {
     coin.rotation.z = 0.09 - distance / rollingRadius
     shadow.position.x = distance
 
+    if (spin.current) {
+      const { from, to, startedAt } = spin.current
+      const progress = Math.min((performance.now() - startedAt) / spinDurationMs, 1)
+      if (progress < 1) {
+        coin.rotation.y = MathUtils.lerp(from, to, 1 - (1 - progress) ** 3)
+        invalidate()
+      } else {
+        coin.rotation.y = 0
+        spin.current = null
+      }
+    }
+
     camera.position.set(followX - 1.58 + current.pointerX * 0.15, 1.57 + cameraLift - current.pointerY * 0.09, 4.55)
     camera.lookAt(followX, 0.99 + cameraLift, 0)
+
+    const button = spinTarget.current
+    if (button) {
+      camera.updateMatrixWorld()
+      projected.copy(coin.position).project(camera)
+      const { x, y } = projected
+      projected.copy(coin.position).setY(coin.position.y + rollingRadius).project(camera)
+      button.style.setProperty('left', `${(x + 1) * size.width / 2}px`)
+      button.style.setProperty('top', `${(1 - y) * size.height / 2}px`)
+      button.style.setProperty('width', `${(projected.y - y) * size.height}px`)
+    }
 
     if (!hasFrame.current) {
       gl.domElement.toggleAttribute('data-coin-ready', true)

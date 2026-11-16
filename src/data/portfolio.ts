@@ -13,7 +13,15 @@ export const ROLES: Role[] = [
   {
     id: 'harvey',
     company: 'Harvey',
-    period: 'Aug – Dec 2026',
+    role: 'Machine Learning Fellow · via Break Through Tech',
+    period: 'Sep 2026 – Present',
+    details: {
+      bullets: [
+        'Built a seven-stage Python pipeline to classify 1,000 legal scans and produce JSON that passed schema validation 96.4% of the time.',
+        'Raised macro F1 from 0.62 to 0.89 by benchmarking ColQwen2, ColPali, and OCR text baselines.',
+      ],
+      tags: ['Python', 'Document classification', 'OCR', 'Model evaluation'],
+    },
   },
   {
     id: 'fifa',
@@ -33,14 +41,28 @@ export const ROLES: Role[] = [
   {
     id: 'break-through-tech',
     company: 'Break Through Tech',
-    role: 'AI/ML Program',
+    role: 'AI Program',
     period: 'May 2026 – May 2027',
+    details: {
+      bullets: [
+        'Pursuing Cornell University’s Certificate in Machine Learning Foundations, expected May 2027.',
+        'Worked on data exploration, visualization, and project coordination for an AI Studio team forecasting next-week red tide risk near Sarasota.',
+      ],
+      tags: ['Machine learning', 'Data visualization', 'Time-series forecasting'],
+    },
   },
   {
     id: 'hackuta',
     company: 'HackUTA',
     role: 'Director',
-    period: 'Mar – Nov 2026',
+    period: 'Mar 2026 – Present',
+    details: {
+      bullets: [
+        'Lead HackUTA 2026, a 24-hour ACM hackathon for 700 students.',
+        'Raised $27,500 from nine sponsors, up from $10,000.',
+      ],
+      tags: ['Event operations', 'Sponsorship', 'Student leadership'],
+    },
   },
   {
     id: 'dkfw',

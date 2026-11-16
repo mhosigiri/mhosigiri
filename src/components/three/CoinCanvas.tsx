@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Coin, type CoinProps } from './Coin'
 
-export default function CoinCanvas({ pointerTarget, getProgress, image }: CoinProps) {
+export default function CoinCanvas(props: CoinProps) {
   return (
     <Canvas
       frameloop="demand"
@@ -11,7 +11,7 @@ export default function CoinCanvas({ pointerTarget, getProgress, image }: CoinPr
       gl={{ antialias: true, alpha: true }}
     >
       <Suspense fallback={null}>
-        <Coin pointerTarget={pointerTarget} getProgress={getProgress} image={image} />
+        <Coin {...props} />
       </Suspense>
     </Canvas>
   )

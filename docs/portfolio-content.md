@@ -4,21 +4,21 @@ Updated November 11, 2026. The GitHub review covers projects added or materially
 
 ## Experience
 
-### Harvey
+### Harvey | Machine Learning Fellow via Break Through Tech
 
-August to December 2026.
+September 2026 to present. Built a seven-stage Python pipeline to classify 1,000 legal scans and produce JSON that passed schema validation 96.4% of the time. Raised macro F1 from 0.62 to 0.89 by benchmarking ColQwen2, ColPali, and OCR text baselines.
 
 ### HBS / FIFA World Cup 2026 | Network Operations Intern
 
 Summer 2026. Supported network operations for 2,500+ endpoints at live match venues. Worked with Cisco SD-WAN, Layer 2 and Layer 3 networking, and redundancy for broadcast operations. Source for the role and scope is the existing portfolio. [Related IT support handbook](https://github.com/mhosigiri/IT_Support)
 
-### Break Through Tech | AI/ML Program
+### Break Through Tech | AI Program
 
-May 2026 to May 2027.
+May 2026 to May 2027. Pursuing Cornell University’s Certificate in Machine Learning Foundations, expected May 2027. Contributed data exploration, visualization, and project coordination to the AI Studio red tide forecasting project.
 
 ### HackUTA | Director
 
-March to November 2026.
+March 2026 to present. Leads HackUTA 2026, a 24-hour ACM hackathon for 700 students. Raised $27,500 from nine sponsors, up from $10,000.
 
 ### DKFW Roofing & Restoration | Full-Stack Developer
 
